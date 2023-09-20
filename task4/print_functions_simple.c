@@ -1,13 +1,16 @@
 #include "main.h"
 
 /**
- * print_unsinged : Print integer as unsigned to console
+ * print_unsigned - Print integer as unsigned to console
  *
- * @num : input number
- * Return : The number of digits of the output
+ * @ap : Argument list
+ * Return: The number of digits of the output
  */
-int print_unsigned(unsigned long num)
+int print_unsigned(va_list ap)
 {
+	unsigned int num = va_arg(ap, unsigned int);
+	char *result;
 
-    return (_putString(convert_number(num, 10, UNSIGNED)));
+	result = convert_number(num, 10, UNSIGNED);
+	return (_putString(result));
 }
