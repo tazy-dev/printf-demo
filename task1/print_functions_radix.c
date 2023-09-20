@@ -1,14 +1,15 @@
 #include "main.h"
-#include "utils.c"
 
 /**
- * print_int : Print integer to console
+ * print_int - Print integer to console
  *
- * @num : input number
- * Return : The number of digits of the output
+ * @ap : input argument
+ * Return: The number of digits of the output
  */
-int print_int(long num)
+int print_int(va_list ap)
 {
+	int num = va_arg(ap, int);
 
-    return (_putString(convert_number(num, 10, 0)));
+	return (_putString(convert_number(num, 10, 0)));
 }
+

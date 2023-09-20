@@ -1,34 +1,41 @@
 #include "main.h"
-#include "_buffer.c"
 
 /**
- * print_char : Print character to console
+ * print_char - Print character to console
  *
- * @c : input character
- * Return : On success (1)
+ * @ap : input argument
+ * Return: On success (1)
  */
-int print_char(char c)
+int print_char(va_list ap)
 {
-    return (_putChar(c));
+	return (_putChar(va_arg(ap, int)));
 }
 
 /**
- * print_percentage : Print % to console
+ * print_percentage - Print % to console
  *
- * Return : On success (1)
+ * @ap : input argument
+ * Return: On success (1)
  */
-int print_percentage()
+int print_percentage(va_list ap)
 {
-    return (_putChar('%'));
+	(void)ap;
+	return (_putChar('%'));
 }
 
 /**
- * print_string : Print string to console
+ * print_string - Print string to console
  *
- * @str : input string
- * Return : The length of the string
+ * @ap : Input argument
+ * Return: The length of the string
  */
-int print_string(char *str)
+int print_string(va_list ap)
 {
-    return (_putString(str));
+	char *str = va_arg(ap, char *);
+
+	if ((int)(!str))
+	{
+		return (_putString("(null)"));
+	} else
+		return (_putString(str));
 }
