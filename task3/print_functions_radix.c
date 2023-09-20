@@ -1,61 +1,76 @@
 #include "main.h"
 
 /**
- * print_int : Print integer to console
+ * print_int - Print integer to console
  *
- * @num : input number
- * Return : The number of digits of the output
+ * @ap : input argument
+ * Return: The number of digits of the output
  */
-int print_int(long num)
+int print_int(va_list ap)
 {
+	int num = va_arg(ap, int);
 
-    return (_putString(convert_number(num, 10, 0)));
+	return (_putString(convert_number(num, 10, 0)));
 }
 
 /**
- * print_bin : Print integer as Binary to console
+ * print_bin - Print integer as Binary to console
  *
- * @num : input number
- * Return : The number of digits of the output
+ * @ap : input argument
+ * Return: The number of digits of the output
  */
-int print_bin(unsigned int num)
+int print_bin(va_list ap)
 {
+	unsigned int num = va_arg(ap, unsigned int);
 
-    return (_putString(convert_number(num, 2, UNSIGNED)));
+	return (_putString(convert_number(num, 2, UNSIGNED)));
 }
 
 /**
- * print_oct : Print integer as octal to console
+ * print_oct - Print integer as octal to console
  *
- * @num : input number
- * Return : The number of digits of the output
+ * @ap : argument list
+ *
+ * Return: The number of digits of the output
  */
-int print_oct(unsigned long num)
+int print_oct(va_list ap)
 {
+	unsigned int num = va_arg(ap, unsigned int);
+	char *result;
 
-    return (_putString(convert_number(num, 8, UNSIGNED)));
+	result = convert_number(num, 8, UNSIGNED);
+	return (_putString(result));
 }
 
 /**
- * print_hex : Print integer as hexa lowe to console
+ * print_hex - Print integer as hexa lowe to console
  *
- * @num : input number
- * Return : The number of digits of the output
+ * @ap : argument list
+ *
+ * Return: The number of digits of the output
  */
-int print_hex(unsigned long num)
+int print_hex(va_list ap)
 {
+	unsigned int num = va_arg(ap, unsigned int);
+	char *result;
 
-    return (_putString(convert_number(num, 16, UNSIGNED | LOWERCASE)));
+	result = convert_number(num, 16, UNSIGNED | LOWERCASE);
+	return (_putString(result));
 }
 
 /**
- * print_HEX : Print integer as hex upper to console
+ * print_HEX - Print integer as hex upper to console
  *
- * @num : input number
- * Return : The number of digits of the output
+ * @ap : argument list
+ *
+ * Return: The number of digits of the output
  */
-int print_HEX(unsigned long num)
+int print_HEX(va_list ap)
 {
 
-    return (_putString(convert_number(num, 16, UNSIGNED)));
+	unsigned int num = va_arg(ap, unsigned int);
+	char *result;
+
+	result = convert_number(num, 16, UNSIGNED | !LOWERCASE);
+	return (_putString(result));
 }
